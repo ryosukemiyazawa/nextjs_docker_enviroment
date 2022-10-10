@@ -1,0 +1,42 @@
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import Link from 'next/link'
+import Layout from '../components/layout/main'
+
+//Cardの読み込み
+import Card from '../components/card'
+
+const Home: NextPage = () => {
+  return (
+	<>
+		<Layout>
+			<Head>
+				<title>あいうえお</title>
+			</Head>
+			<div className="row">
+				<div className="col">
+					<Card title="【待望の復刻！】マンダリン香る、秋色のヴァーベナ" image="https://placehold.jp/250x250.png?text=カード画像"></Card>
+				</div>
+				<div className="col">
+					<div className="row">
+						<div className="col-6">
+							<Card title="【咲きたて艶めく、金木犀。】秋にきらめく花と果実のみずみずしい香り" image="https://placehold.jp/250x250.png?text=1"></Card>
+						</div>
+						<div className="col-6">
+							<Card title="【目覚めに、うるおい満ちる髪。】スキンケア発想で、地肌をケア。" image="https://placehold.jp/250x250.png?text=2"></Card>
+						</div>
+						<div className="col-6">
+							<Card title="【ミニオードトワレコレクション】その日の気分やスタイルに合わせて楽しんで" image="https://placehold.jp/250x250.png?text=3"></Card>
+						</div>
+						<div className="col-6">
+							<Card title="【生命の一滴がスキンケアを変える。】ロクシタンのスキンケア" image="https://placehold.jp/250x250.png?text=4"></Card>
+						</div>
+					</div>
+				</div>
+			</div>
+		</Layout>
+	</>
+  )
+}
+
+export default Home
