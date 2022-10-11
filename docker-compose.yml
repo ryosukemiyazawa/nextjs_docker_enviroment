@@ -5,9 +5,7 @@ services:
     container_name: "202210_nextjs"
     build:
       context: ./app
-      args:
-        - UID=${UID}
-        - GID=${GID}
+    user: "${UID_GID}"
     volumes:
       - ./app:/app/
     ports:
