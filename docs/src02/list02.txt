@@ -1,0 +1,71 @@
+// React
+import { useEffect } from "react";
+
+// Next
+import type { NextPage } from "next";
+import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+// Custom Component
+import Layout from "@/components/layout/main";
+
+const ListPage: NextPage = () => {
+
+	const router = useRouter()
+
+	useEffect(() => {
+		console.log("ページが開かれました");
+	}, [])
+
+	const items = [
+		{ "id": "01", name: "山田"},
+		{ "id": "02", name: "田中"},
+		{ "id": "03", name: "鈴木"},
+	];
+
+	//JSXの配列にする
+	let items_elements = []
+	for(const item of items){
+		items_elements.push(<p key={item.id}>{item.name}</p>)
+	}
+
+	//描画関数
+	const renderItems = () => {
+		return items.map((item) => {
+			return <p key={item.id}>{item.name}</p>
+		})
+	};
+
+	return (
+		<>
+			<Layout>
+				<Head>
+					<title>顧客情報一覧</title>
+				</Head>
+				
+				<div>
+					<h2>mapを使う</h2>
+
+					{
+						items.map((item) => {
+							return <p key={item.id}>{item.name}</p>
+						})
+					}
+
+					<h2>JSXの配列を使う</h2>
+
+					{ items_elements }
+
+					
+					<h3>描画関数</h3>
+
+					{ renderItems() }
+
+				</div>
+			</Layout>
+		</>
+	);
+};
+
+export default ListPage;

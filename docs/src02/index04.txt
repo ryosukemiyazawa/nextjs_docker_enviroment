@@ -1,0 +1,53 @@
+// React
+import { useEffect } from "react";
+
+// Next
+import type { NextPage } from "next";
+import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+// Custom Component
+import Layout from "@/components/layout/main";
+
+const FormPage: NextPage = () => {
+
+	const router = useRouter()
+
+	const onClickBtn = () => {
+		router.push({
+			pathname: "/app",
+			query: {
+				a: Math.random() * 100,
+				b: Math.random() * 100,
+			}
+		});
+	};
+
+	return (
+		<>
+			<Layout>
+				<Head>
+					<title>検索フォーム</title>
+				</Head>
+				
+				<div>
+					検索フォーム
+
+					<p>a={ router.query.a }</p>
+					<p>b={ router.query.b }</p>
+
+					<Link href={{ 
+						pathname: "/app", 
+						query: { a: 200, b: 200 } }}>
+							<a>パラメーター付きのリンク</a>
+					</Link>
+
+					<button onClick={ onClickBtn }>動的なパラメーターの付与</button>
+				</div>
+			</Layout>
+		</>
+	);
+};
+
+export default FormPage;

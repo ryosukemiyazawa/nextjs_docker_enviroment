@@ -1,0 +1,35 @@
+// React
+import { useEffect } from "react";
+
+// Next
+import type { NextPage } from "next";
+import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+// Custom Component
+import Layout from "@/components/layout/main";
+
+const FormPage: NextPage = () => {
+
+	const router = useRouter()
+
+	return (
+		<>
+			<Layout>
+				<Head>
+					<title>検索フォーム</title>
+				</Head>
+				
+				<div>
+					検索フォーム
+
+					<p>a={ router.query.a }</p>
+					<p>b={ router.query.b }</p>
+				</div>
+			</Layout>
+		</>
+	);
+};
+
+export default FormPage;

@@ -1,0 +1,71 @@
+// React
+import { useEffect, useState } from "react";
+
+// Next
+import type { NextPage } from "next";
+import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+// Custom Component
+import Layout from "@/components/layout/main";
+
+import dummy_customers from "@/logic/dummy_customer.json"
+
+const DetailPage: NextPage = () => {
+
+	const router = useRouter()
+	const user_id = router.query.id
+
+	const [customer, setCustomer] = useState({})
+
+	const loadCustomer = (id:any) => {
+
+		setTimeout(() => {
+			
+			const customer = dummy_customers.find((item) => {
+				return item.id == id
+			})
+
+			if(customer){
+				setCustomer(customer)
+			}
+			
+		}, 1000);
+
+	}
+	
+	useEffect(() => {
+		console.log("ページが開かれました");
+		loadCustomer(user_id)
+	}, [])
+	
+	return (
+		<>
+			<Layout>
+				<Head>
+					<title>顧客情報詳細</title>
+				</Head>
+				
+				<div>
+					<div className="mb-3">
+						<h5>ID</h5>
+						<input type="text" readOnly className="form-control-plaintext" value={ customer.id } />
+					</div>
+
+					<div className="mb-3">
+						<h5>名前</h5>
+						<input type="text" className="form-control" value={ customer.name } />
+					</div>
+
+					<div className="mb-3">
+						<h5>住所</h5>
+						<input type="text" className="form-control" value={ customer.address } />
+					</div>
+				</div>
+			</Layout>
+		</>
+	);
+};
+
+export default DetailPage;

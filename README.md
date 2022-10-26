@@ -28,3 +28,14 @@ $ docker-compose up
 ## サンプル
 
 https://ryosukemiyazawa.github.io/react_docker_envriroment/
+
+
+## エクスポート
+
+```
+# ビルド
+$ bin/npx next build
+
+# エクスポート
+$ bin/npx next export
+```

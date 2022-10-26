@@ -1,0 +1,56 @@
+// React
+import { useEffect, useState } from "react";
+
+// Next
+import type { NextPage } from "next";
+import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+// Custom Component
+import Layout from "@/components/layout/main";
+
+const SearchPage: NextPage = () => {
+
+	//フォームの入力値を受け取るためのState
+	const [formValue, setFormValue]	= useState({ name: "", area: ""})
+
+	const onClickSearch = () => {
+		alert("name=" + formValue.name + "\n" + "area=" + formValue.area)
+	}
+
+	return (
+		<>
+			<Layout>
+				<Head>
+					<title>検索フォーム</title>
+				</Head>
+				
+				<div className="mb-3">
+					<label>名前</label>
+					<input 
+						type="text" 
+						className="form-control"
+						value={ formValue.name } 
+						onChange={ (e) => { setFormValue({...formValue, name: e.target.value })} }/>
+				</div>
+
+				<div className="mb-3">
+					<label>エリア</label>
+					<input 
+						type="text" 
+						className="form-control"
+						value={ formValue.area } 
+						onChange={ (e) => { setFormValue({...formValue, area: e.target.value })} }/>
+				</div>
+
+				<div className="mb-3">
+					<button className="btn btn-primary" onClick={ onClickSearch }>検索</button>
+				</div>
+
+			</Layout>
+		</>
+	);
+};
+
+export default SearchPage;

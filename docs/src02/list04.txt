@@ -1,0 +1,83 @@
+// React
+import { useEffect } from "react";
+
+// Next
+import type { NextPage } from "next";
+import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+// Custom Component
+import Layout from "@/components/layout/main";
+
+const ListPage: NextPage = () => {
+
+	const router = useRouter()
+
+	const customers = [
+		{
+			"id": 1,
+			"name": "片山 優太",
+			"address": "東京都小平市上水本町1-3-804",
+		  },
+		  {
+			"id": 2,
+			"name": "井筒 敏樹",
+			"address": "愛知県小牧市中央2-5-22",
+		  }
+	];
+
+	useEffect(() => {
+		console.log("ページが開かれました");
+	}, [])
+
+	
+	const onClickCustomer = (item:any) => {
+		router.push({
+			pathname: "/app/detail",
+			query: {
+				id: item.id
+			}
+		})
+	}
+
+	//描画関数
+	const renderCustomers = () => {
+		return customers.map((item) => {
+			return (
+				<tr onClick={ () => { onClickCustomer(item) } }>
+					<td>{ item.id }</td>
+					<td>{ item.name }</td>
+					<td>{ item.address }</td>
+				</tr>
+			)
+		});
+	};
+
+	return (
+		<>
+			<Layout>
+				<Head>
+					<title>顧客情報一覧</title>
+				</Head>
+				
+				<div>
+					<table className="table">
+						<thead>
+							<tr>
+								<th>顧客ID</th>
+								<th>顧客名</th>
+								<th>住所</th>
+							</tr>
+						</thead>
+						<tbody>
+							{renderCustomers()}
+						</tbody>
+					</table>
+				</div>
+			</Layout>
+		</>
+	);
+};
+
+export default ListPage;

@@ -1,0 +1,57 @@
+// React
+import { useEffect, useRef, useState } from "react";
+
+// Next
+import type { NextPage } from "next";
+import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+// Custom Component
+import Layout from "@/components/layout/main";
+
+const SearchPage: NextPage = () => {
+
+	const inputName = useRef<HTMLInputElement>(null)
+	const inputArea = useRef<HTMLInputElement>(null)
+
+	const onClickSearch = () => {
+		if(!inputName.current || !inputArea.current)return
+		alert("name=" + inputName.current.value + "\n" + "area=" + inputArea.current.value)
+	}
+
+	return (
+		<>
+			<Layout>
+				<Head>
+					<title>検索フォーム</title>
+				</Head>
+				
+				<div className="mb-3">
+					<label>名前</label>
+					<input 
+						type="text" 
+						className="form-control"
+						ref={ inputName } 
+						/>
+				</div>
+
+				<div className="mb-3">
+					<label>エリア</label>
+					<input 
+						type="text" 
+						className="form-control"
+						ref={ inputArea}
+						/>
+				</div>
+
+				<div className="mb-3">
+					<button className="btn btn-primary" onClick={ onClickSearch }>検索</button>
+				</div>
+
+			</Layout>
+		</>
+	);
+};
+
+export default SearchPage;

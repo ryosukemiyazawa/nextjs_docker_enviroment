@@ -1,0 +1,36 @@
+// React
+import { useEffect } from "react";
+
+// Next
+import type { NextPage } from "next";
+import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
+// Custom Component
+import Layout from "@/components/layout/main";
+
+const ListPage: NextPage = () => {
+
+	const router = useRouter()
+
+	useEffect(() => {
+		console.log("ページが開かれました");
+	}, [])
+
+	return (
+		<>
+			<Layout>
+				<Head>
+					<title>顧客情報一覧</title>
+				</Head>
+				
+				<div>
+					
+				</div>
+			</Layout>
+		</>
+	);
+};
+
+export default ListPage;
